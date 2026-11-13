@@ -7,6 +7,10 @@ Control Claude Code from your phone:
 
 Both use the free [ntfy](https://ntfy.sh) app for push notifications. No Claude Remote Control access is needed.
 
+> **Quickest setup:** open Claude Code in this folder and say
+> *"Follow [instructions_for_claude_code_setup.md](instructions_for_claude_code_setup.md) to set this up for me."*
+> It generates your own secrets, walks you through the phone and ngrok steps, installs the hook safely and tests everything.
+
 ```
 APPROVALS
 Claude Code ── PermissionRequest hook (hook/phone_approve.py)
