@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 780" width="1220" height="780" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9333ea"/></marker>
+    <style>
+      .t  { fill:#0f172a; font-size:15px; font-weight:600 }
+      .s  { fill:#475569; font-size:12px }
+      .h  { fill:#0f172a; font-size:13px; font-weight:700; letter-spacing:.06em }
+      .lb { font-size:12px; font-weight:600 }
+      .bl { fill:#1d4ed8 } .gr { fill:#15803d } .pu { fill:#7e22ce }
+      .box { fill:#ffffff; stroke:#cbd5e1; stroke-width:1.5 }
+      .panel { fill:#f8fafc; stroke:#e2e8f0; stroke-width:1.5 }
+      .eb { stroke:#2563eb; stroke-width:2.2; fill:none; marker-end:url(#ab) }
+      .eg { stroke:#16a34a; stroke-width:2.2; fill:none; marker-end:url(#ag) }
+      .ep { stroke:#9333ea; stroke-width:2; fill:none; stroke-dasharray:6 5; marker-end:url(#ap) }
+      .badge-b { fill:#2563eb } .badge-g { fill:#16a34a }
+      .bt { fill:#fff; font-size:11px; font-weight:700 }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1220" height="780" rx="18" fill="#ffffff"/>
+  <text x="40" y="44" fill="#0f172a" font-size="22" font-weight="700">Phone Approval Relay: how it works</text>
+  <text x="40" y="68" class="s">Approve Claude Code prompts and run prompts/commands from your phone. Every connection from the laptop is outbound.</text>
+
+  <!-- ===== column panels ===== -->
+  <rect x="30" y="90" width="270" height="600" rx="14" class="panel"/>
+  <text x="50" y="118" class="h">📱 YOUR PHONE</text>
+  <text x="50" y="136" class="s">ntfy app</text>
+
+  <rect x="395" y="90" width="310" height="600" rx="14" class="panel"/>
+  <text x="415" y="118" class="h">☁ INTERNET</text>
+  <text x="415" y="136" class="s">public services</text>
+
+  <rect x="800" y="90" width="370" height="600" rx="14" class="panel"/>
+  <text x="820" y="118" class="h">💻 YOUR LAPTOP</text>
+  <text x="820" y="136" class="s">everything runs locally</text>
+
+  <!-- ===== phone: approval notification ===== -->
+  <rect x="50" y="160" width="230" height="150" rx="12" class="box"/>
+  <text x="64" y="182" class="s">approvals topic</text>
+  <text x="64" y="206" class="t">Claude Code: Bash</text>
+  <text x="64" y="226" class="s" font-family="Consolas, monospace">git push origin main</text>
+  <rect x="64" y="252" width="94" height="34" rx="8" fill="#2563eb"/>
+  <text x="111" y="274" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Approve</text>
+  <rect x="170" y="252" width="94" height="34" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="217" y="274" fill="#0f172a" font-size="13" font-weight="600" text-anchor="middle">Deny</text>
+
+  <!-- ===== phone: console chat ===== -->
+  <rect x="50" y="430" width="230" height="240" rx="12" class="box"/>
+  <text x="64" y="452" class="s">console topic</text>
+  <rect x="120" y="464" width="146" height="26" rx="10" fill="#dcfce7"/>
+  <text x="258" y="482" font-size="12" fill="#14532d" text-anchor="end" font-family="Consolas, monospace">/cd C:\my-repo</text>
+  <rect x="96" y="498" width="170" height="26" rx="10" fill="#dcfce7"/>
+  <text x="258" y="516" font-size="12" fill="#14532d" text-anchor="end">what's the PR status?</text>
+  <rect x="64" y="534" width="190" height="64" rx="10" fill="#f1f5f9"/>
+  <text x="74" y="553" font-size="12" fill="#0f172a" font-weight="700">🤖 Claude</text>
+  <text x="74" y="571" font-size="12" fill="#0f172a">PR #60 is open, checks pass,</text>
+  <text x="74" y="588" font-size="12" fill="#0f172a">waiting for review.</text>
+  <rect x="140" y="608" width="126" height="26" rx="10" fill="#dcfce7"/>
+  <text x="258" y="626" font-size="12" fill="#14532d" text-anchor="end" font-family="Consolas, monospace">!git status</text>
+  <text x="64" y="656" class="s">replies + cost footer come back here</text>
+
+  <!-- ===== internet ===== -->
+  <rect x="425" y="160" width="250" height="100" rx="12" class="box"/>
+  <text x="445" y="190" class="t">ntfy.sh</text>
+  <text x="445" y="210" class="s">push service</text>
+  <text x="445" y="236" class="s" font-weight="600" fill="#1d4ed8">approvals topic (secret name)</text>
+
+  <rect x="425" y="310" width="250" height="90" rx="12" class="box"/>
+  <text x="445" y="340" class="t">ngrok HTTPS tunnel</text>
+  <text x="445" y="360" class="s">public URL → relay :8000</text>
+  <text x="445" y="380" class="s">only used for the button tap</text>
+
+  <rect x="425" y="460" width="250" height="140" rx="12" class="box"/>
+  <text x="445" y="490" class="t">ntfy.sh</text>
+  <text x="445" y="510" class="s">push service</text>
+  <text x="445" y="536" class="s" font-weight="600" fill="#15803d">console topic (secret name)</text>
+  <text x="445" y="560" class="s">messages you type and replies</text>
+  <text x="445" y="578" class="s">share one chat thread</text>
+
+  <!-- ===== laptop ===== -->
+  <rect x="830" y="150" width="310" height="60" rx="12" class="box"/>
+  <text x="848" y="176" class="t">Claude Code</text>
+  <text x="848" y="196" class="s">your terminal session</text>
+
+  <rect x="830" y="255" width="310" height="60" rx="12" class="box"/>
+  <text x="848" y="281" class="t">PermissionRequest hook</text>
+  <text x="848" y="301" class="s" font-family="Consolas, monospace">hook/phone_approve.py</text>
+
+  <rect x="830" y="360" width="310" height="66" rx="12" class="box"/>
+  <text x="848" y="387" class="t">Relay (FastAPI :8000)</text>
+  <text x="848" y="408" class="s" font-family="Consolas, monospace">relay/app.py</text>
+
+  <rect x="830" y="490" width="310" height="60" rx="12" class="box"/>
+  <text x="848" y="516" class="t">Phone console daemon</text>
+  <text x="848" y="536" class="s" font-family="Consolas, monospace">console/phone_console.py</text>
+
+  <rect x="830" y="600" width="310" height="60" rx="12" class="box"/>
+  <text x="848" y="626" class="t">claude -p  /  PowerShell</text>
+  <text x="848" y="646" class="s">runs your prompt or !command</text>
+
+  <!-- ===== approvals flow (blue) ===== -->
+  <!-- 1 Claude -> hook -->
+  <path d="M945,210 L945,253" class="eb"/>
+  <circle cx="925" cy="232" r="10" class="badge-b"/><text x="925" y="236" class="bt" text-anchor="middle">1</text>
+  <!-- 6b hook -> Claude continues -->
+  <path d="M1045,255 L1045,212" class="eb"/>
+  <text x="1056" y="237" class="lb bl">continues</text>
+  <!-- 2 hook -> relay -->
+  <path d="M945,315 L945,358" class="eb"/>
+  <circle cx="925" cy="337" r="10" class="badge-b"/><text x="925" y="341" class="bt" text-anchor="middle">2</text>
+  <!-- 6 relay -> hook decision -->
+  <path d="M1045,360 L1045,317" class="eb"/>
+  <circle cx="1065" cy="339" r="10" class="badge-b"/><text x="1065" y="343" class="bt" text-anchor="middle">6</text>
+  <!-- 3 relay -> ntfy approvals -->
+  <path d="M830,380 C760,380 740,215 677,215" class="eb"/>
+  <circle cx="752" cy="292" r="10" class="badge-b"/><text x="752" y="296" class="bt" text-anchor="middle">3</text>
+  <!-- 4 ntfy -> phone -->
+  <path d="M425,200 L282,200" class="eb"/>
+  <circle cx="352" cy="186" r="10" class="badge-b"/><text x="352" y="190" class="bt" text-anchor="middle">4</text>
+  <!-- 5 tap -> ngrok -> relay -->
+  <path d="M158,286 C158,345 330,345 423,345" class="eb"/>
+  <circle cx="300" cy="333" r="10" class="badge-b"/><text x="300" y="337" class="bt" text-anchor="middle">5</text>
+  <path d="M675,365 C750,365 760,405 828,405" class="eb"/>
+
+  <!-- ===== console flow (green) ===== -->
+  <!-- A phone -> ntfy console -->
+  <path d="M280,505 L423,505" class="eg"/>
+  <circle cx="352" cy="491" r="10" class="badge-g"/><text x="352" y="495" class="bt" text-anchor="middle">A</text>
+  <!-- B ntfy -> daemon -->
+  <path d="M675,505 L828,505" class="eg"/>
+  <circle cx="752" cy="491" r="10" class="badge-g"/><text x="752" y="495" class="bt" text-anchor="middle">B</text>
+  <!-- C daemon -> claude -p -->
+  <path d="M985,550 L985,598" class="eg"/>
+  <circle cx="965" cy="574" r="10" class="badge-g"/><text x="965" y="578" class="bt" text-anchor="middle">C</text>
+  <!-- D daemon -> ntfy -> phone -->
+  <path d="M830,535 L677,570" class="eg"/>
+  <circle cx="752" cy="567" r="10" class="badge-g"/><text x="752" y="571" class="bt" text-anchor="middle">D</text>
+  <path d="M425,575 L282,575" class="eg"/>
+
+  <!-- E remote Claude tools reuse approvals -->
+  <path d="M1140,630 C1195,630 1195,285 1142,285" class="ep"/>
+  <text x="1188" y="470" class="lb pu" text-anchor="middle" transform="rotate(90 1188 470)">E · its tool approvals use steps 1–6</text>
+
+  <!-- ===== legend / steps ===== -->
+  <line x1="40" y1="708" x2="1160" y2="708" stroke="#e2e8f0"/>
+  <circle cx="50" cy="733" r="9" class="badge-b"/>
+  <text x="66" y="737" class="s"><tspan font-weight="700" fill="#1d4ed8">Approvals:</tspan> 1 Claude needs permission → 2 hook asks relay → 3 relay pushes → 4 phone buzzes → 5 tap goes via ngrok → 6 hook gets answer</text>
+  <circle cx="50" cy="760" r="9" class="badge-g"/>
+  <text x="66" y="764" class="s"><tspan font-weight="700" fill="#15803d">Console:</tspan> A you type in the topic → B daemon streams it → C runs claude -p or PowerShell → D reply posted back to the same topic</text>
+</svg>

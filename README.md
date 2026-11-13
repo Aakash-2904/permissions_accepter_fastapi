@@ -11,17 +11,24 @@ Both use the free [ntfy](https://ntfy.sh) app for push notifications. No Claude 
 > *"Follow [instructions_for_claude_code_setup.md](instructions_for_claude_code_setup.md) to set this up for me."*
 > It generates your own secrets, walks you through the phone and ngrok steps, installs the hook safely and tests everything.
 
-```
-APPROVALS
-Claude Code ── PermissionRequest hook (hook/phone_approve.py)
-                 ├─ POST /requests ──────► FastAPI relay ──► ntfy ──► phone [Approve] [Deny]
-                 │                              ◄── POST /decide/{id}/{allow|deny} ──┘
-                 └─ GET /requests/{id} (long-poll, outbound HTTPS only) ◄── decision
+## How it works
 
-PHONE CONSOLE
-phone ──(type in ntfy topic)──► ntfy ──► console/phone_console.py ──► claude -p / PowerShell
-phone ◄──────(reply in the same topic)─────────────────┘
-```
+![Architecture: phone, ntfy/ngrok, and the laptop components, with the approvals flow (1–6) and the console flow (A–D)](docs/architecture.svg)
+
+**Approvals (blue, 1–6)**
+1. Claude Code needs permission for a tool (e.g. `Bash`) and runs the **PermissionRequest hook**.
+2. The hook sends the request to the **relay** (`POST /requests`).
+3. The relay pushes a notification to your private **approvals topic** on ntfy.sh.
+4. Your phone shows it with **Approve / Deny** buttons.
+5. Your tap goes through the **ngrok HTTPS tunnel** to the relay (`POST /decide/...`).
+6. The hook, which has been long-polling the relay, gets the decision and Claude Code continues. No tap within `WAIT_SECONDS` → normal terminal prompt.
+
+**Phone console (green, A–D)**
+- **A.** You type a prompt (or `!command`, `/cd`, `/new` …) into your private **console topic**.
+- **B.** The console daemon on the laptop is streaming that topic (outbound connection) and picks it up.
+- **C.** It runs `claude -p` (keeping the conversation) or PowerShell in the current folder.
+- **D.** The reply is posted back to the same topic, so it reads like a chat.
+- **E (purple).** If the remote Claude needs a tool permission, it goes through the approvals flow (1–6), labelled **[phone console]**.
 
 - The hook makes **outbound requests only**. If anything fails, it prints nothing and Claude Code shows its normal terminal prompt. **It never auto-approves.**
 - The phone console also only makes outbound connections (to ntfy). It doesn't need the relay to be public.
